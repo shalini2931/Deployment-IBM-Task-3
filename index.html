@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Books</title>
+</head>
+<body>
+
+  <h2>Books List</h2>
+  <ul id="bookList"></ul>
+
+  <script>
+    fetch('http://localhost:3000/books')
+      .then(res => res.json())
+      .then(data => {
+        const ul = document.getElementById("bookList");
+        data.forEach(book => {
+          const li = document.createElement("li");
+          li.textContent = book.title;
+          ul.appendChild(li);
+        });
+      })
+      .catch(err => console.log(err));
+  </script>
+
+</body>
+</html>
